@@ -25,7 +25,7 @@ const HomePage = () => {
   const [Events,setEvents] = useState([]);
   const [eventTeams,setEventTeams] = useState([]);
   const [eventMatchSequence,setEventMatchSequence] = useState("");
-
+  const [updateVisible, setupdateVisible]=useState(false);
   const {RangePicker} = DatePicker;
   const {TextArea} = Input; 
   
@@ -180,7 +180,7 @@ if(!UserType) UserType="User";
     if (typeof organisers === 'string' || organisers instanceof String)
    var neworganisers = organisers.split(",");
     console.log("AddEvent called");
-    axios.post('/Events/saveEvent',{
+   await axios.post('/Events/saveEvent',{
       
         Eventname: eventName,
         Organisation: organizationName,
@@ -198,9 +198,42 @@ if(!UserType) UserType="User";
         Description:description || "Not defined" ,
     
     })
+    .then(res=>{
+
+    }).catch(error=>{
+      console.log("error while saving event",error);
+    })
   }
 
+async function updateEvent(op){
+  if (typeof refree === 'string' || refree instanceof String)
+  var newrefree=refree.split(",");
+  if (typeof organisers === 'string' || organisers instanceof String)
+ var neworganisers = organisers.split(",");
+  console.log("update Event called");
+  await axios.post("/Events/updateEvent",{
+    Eventname: eventName,
+        Organisation: organizationName,
+        Organisers:neworganisers,
+        Schedule:{
+            DateTo: eventDate || "Not defined" ,
+           DateFrom:eventDate || "Not defined" ,
+            TimeFrom:eventTime|| "Not defined" ,
+            TimeTo:eventTime || "Not defined" ,
+        },
+        VenueLocation:venueLocation || "Not defined" ,
+        Teams:eventTeams || ["Not defined"] ,
+        MatchSequence:eventMatchSequence|| "Not defined" ,
+        Refrees:newrefree|| ["Not defined"] ,
+        Description:description || "Not defined" ,
+  })
+  .then(res=>{
 
+  }).catch(error=>{
+    console.log("error while updating event",error);
+  })
+
+}
   return (
     <div className="Account-Wrapper">
       
@@ -294,6 +327,7 @@ if(!UserType) UserType="User";
       
         </Form>
       </Modal>
+       
       </div>
       <h1 style={{marginBottom:'7vh'  , marginTop:'4vh'  }}>League Matches</h1>
         <div className="Account-Body">
