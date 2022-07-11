@@ -14,6 +14,7 @@ import Select from '@mui/material/Select';
 const UserSignUp = () =>{
    const [UserName, setUserName] = useState('');
    const [Password, setPassword] = useState('');
+   const [SecretKey, setSecretKey] = useState("");
    const [AuthStatus,setAuthStatus] = useState('NotValid');
    const [Message,SetMessage] = useState('');
    const CheckUserName = (e) =>{
@@ -23,7 +24,10 @@ const UserSignUp = () =>{
    const CheckPassword = (e)=>{
     setPassword(e.target.value); console.log(Password);
    }
-
+   const CheckSecretKey = (e) => {
+    setSecretKey(e.target.value);
+    console.log(SecretKey);
+  };
 
    const [UserType,setUserType] = useState('');
    async function submitSignUp (e){
@@ -33,9 +37,10 @@ const UserSignUp = () =>{
         UserName:UserName,
         Password:Password,
         Email:"Email",
-        Mobile:"00000"
+        Mobile:"00000",
+        AdminKey:SecretKey
     }).then(Response=>{
-        console.log(Response.data);   
+        console.log("SignUp API Response ->",Response.data);   
         if (typeof Response.data === 'string' || Response.data instanceof String)
         SetMessage(Response.data);
         const accessToken=Response.data.AccessToken;
@@ -60,25 +65,20 @@ const token = localStorage.getItem(`${UserType} ${UserName}`);
 console.log("fetched from local->")
    console.log(token);
    
- await axios.get('/Auth/TokenValidate', {headers:{"authorization" : `Bearer ${token}`  }}).then(Response=>{
-        
-      if(Response.data.resval === "TokenVerified")
-      { window.location.replace(`/Account/${UserName}`);
-        
-       
-      }
-      else{
-        console.log("Token no verified",Response.data.resval);
-
-      }
-    console.log(Response.data); 
-    
- }).catch(error=>{
-    console.log(error);
- })
-
-  }
-  
+   await axios
+   .get("/Auth/TokenValidate", {
+     headers: { authorization: `Bearer ${token}` },
+   })
+   .then((Response) => {
+     if (Response.data.resval === "TokenVerified") {
+       window.location.replace(`/Admin/${UserName}`);
+     }
+     console.log(Response.data);
+   })
+   .catch((error) => {
+     console.log(error);
+   });
+}
 
 
 
@@ -101,25 +101,70 @@ console.log("fetched from local->")
         onChange={(e)=>{CheckUserName(e)}}    
         sx={{width:'100%',margin:'30px'}} />
 
-
-<FormControl>
-        <InputLabel id="demo-simple-select-label"    sx={{width:'600px',display:'flex',flexFlow:'row wrap',alignItems:'center',justifyContent:'space-around'}}   >UserType</InputLabel>
-        <Select
-        sx={{width:'150px',marginBottom:'3vh'}}
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={UserType}
-          label="UserType"
-          inputProps={{style: {fontSize: 18,wordSpacing: 17,lineHeight: 1.5}}} InputLabelProps={{style: {fontSize: 18,wordSpacing: 17,lineHeight: 1.5}}}
-          onChange={(e)=>{setUserType(e.target.value)}}
-          
-        >
-                  <MenuItem value={"User"}>User</MenuItem>
-                  <MenuItem value={"Admin"}>Admin</MenuItem>
-                  </Select>
+        <FormControl>
+          <InputLabel
+            id="demo-simple-select-label"
+            sx={{
+              width: "600px",
+              display: "flex",
+              flexFlow: "row wrap",
+              alignItems: "center",
+              justifyContent: "space-around",
+            }}
+          >
+            UserType
+          </InputLabel>
+          <Select
+            sx={{ width: "150px", marginBottom: "3vh" }}
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={UserType}
+            label="User Type"
+            inputProps={{
+              style: { fontSize: 18, wordSpacing: 17, lineHeight: 1.5 },
+            }}
+            InputLabelProps={{
+              style: { fontSize: 18, wordSpacing: 17, lineHeight: 1.5 },
+            }}
+            onChange={(e) => {
+              setUserType(e.target.value); const UserTypeX=e.target.value; console.log(UserType); console.log(UserTypeX);
+              if (UserTypeX === "Admin") {
+                const AdminSecretKey = document.getElementById("CheckAdmin");
+                AdminSecretKey.style.display = "flex";
+              } else {
+                const AdminSecretKey = document.getElementById("CheckAdmin");
+                AdminSecretKey.style.display = "none";
+              }
+            }}
+          >
+            <MenuItem value={"User"}>User</MenuItem>
+            <MenuItem value={"Admin"}>Admin</MenuItem>
+          </Select>
         </FormControl>
-
-
+        <div
+          id="CheckAdmin"
+          className={
+            "Check-Admin" + (UserType === "Admin" ? " Visiblex" : " Hiddenx")
+          }
+        >
+          <TextField
+            name="password"
+            autoComplete="off"
+            id="standard-basic"
+            label="Admin Secret Key"
+            variant="outlined"
+            inputProps={{
+              style: { fontSize: 18, wordSpacing: 17, lineHeight: 1.5 },
+            }}
+            InputLabelProps={{
+              style: { fontSize: 18, wordSpacing: 17, lineHeight: 1.5 },
+            }}
+            onChange={(e) => {
+              CheckSecretKey(e);
+            }}
+            sx={{ width: "100%", boxShadow: 4, marginBottom: "3vh" }}
+          />
+        </div>
 
         <TextField id="standard-basic" 
         name='password'

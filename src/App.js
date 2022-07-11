@@ -14,6 +14,7 @@ import UserLogin from './Pages/TestLogin/UserLogin.js';
 import AdminSignUp from './Pages/TestLogin/AdminSignUp.js';
 import AdminLogin from './Pages/TestLogin/AdminLogin.js';
 import NavBar from './Components/NavBar/NavBar'
+import AdminPage from './Pages/HomePage/AdminPage'
 
 function App() {
   return (
@@ -31,8 +32,8 @@ function App() {
       <Route exact path ="/Register2" element = {<AdminSignUp/>}/>
       <Route exact path ="/Admin/Login2" element = {<AdminLogin/>}/>
       <Route exact path="/Account/:UserName" element={<HomePage/>} />
-      
-      <Route  path = "/" element = {<HomePage/>}/>
+      <Route exact path ="/:UserType/:UserName" element={<AdminPage/>} />
+      <Route  path = "/" element = {<UserLogin/>}/>
     </Routes>
     </div>
     </div>

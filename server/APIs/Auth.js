@@ -7,6 +7,9 @@ const UserRouter = express.Router();
 UserRouter.post("/:UserType/SignUp", async (req, res) => {
     // const UserType = req.params.UserType;
     var flag=false;
+    console.log("SignUp for user",req.body.UserName,"of ",req.params.UserType,req.body.AdminKey,process.env.AdminKey);
+    console.log("req body is->");
+     console.log(req.body);
     if(req.params.UserType === "Admin"){
         if(req.body.AdminKey ===process.env.AdminKey){
             flag=true;
@@ -14,8 +17,7 @@ UserRouter.post("/:UserType/SignUp", async (req, res) => {
     }
     else flag=true;
     if(flag){
-     console.log("req body is->");
-     console.log(req.body);
+     
      const UserName = req.body.UserName;
      const Password = req.body.Password;
      if (UserName.length < 1 || Password.length < 1) {
@@ -25,9 +27,7 @@ UserRouter.post("/:UserType/SignUp", async (req, res) => {
      } else {
        try {
          const UserName = req.body.UserName;
-         const AccessToken = jwt.sign({ UserName }, process.env.AccessToken, {
-           expiresIn: "6h"
-         });
+         const AccessToken = fetchToken({ UserName: UserName})
    
          console.log(AccessToken);
    
@@ -108,7 +108,7 @@ UserRouter.post("/:UserType/SignUp", async (req, res) => {
          if(res.Password === password){
            console.log("User Found, Password Matched");
          var resval = "Matched";
-         var newtoken = fetchToken();
+         var newtoken = fetchToken({UserName});
          response.status(201).send({
            resval : resval,
            token : newtoken

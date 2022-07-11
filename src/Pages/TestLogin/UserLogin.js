@@ -42,7 +42,7 @@ const UserLogin = () => {
       .post(
         `/Auth/${UserType}/Login`,
         UserType === "Admin"
-          ? { UserName: UserName, Password: Password, SecretKey: SecretKey }
+          ? { UserName: UserName, Password: Password, AdminKey: SecretKey }
           : {
               UserName: UserName,
               Password: Password,

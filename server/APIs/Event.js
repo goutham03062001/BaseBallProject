@@ -63,4 +63,16 @@ EventRouter.post('/updateEvent', async(req,response)=>{
 });
 
 
+EventRouter.get('/getAllEvents', async(req,response)=>{
+    await EventSchema.find({})
+    .then(res=>{
+        console.log("Fetched  all events ",res);
+        response.status(200).send(res)
+    })
+    .catch(err=>{
+        response.status(500).send("Error: " + err.message);
+            console.log("Error while getting events: " + err);   
+    })
+})
+
 export default EventRouter
