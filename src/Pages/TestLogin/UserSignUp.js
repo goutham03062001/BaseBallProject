@@ -29,7 +29,7 @@ const UserSignUp = () =>{
    async function submitSignUp (e){
       
         var CheckMessage="";
-      await  axios.post(`Auth/${UserType}/SignUp`,  {
+      await  axios.post(`/Auth/${UserType}/SignUp`,  {
         UserName:UserName,
         Password:Password,
         Email:"Email",
@@ -60,7 +60,7 @@ const token = localStorage.getItem(`${UserType} ${UserName}`);
 console.log("fetched from local->")
    console.log(token);
    
- await axios.get('Auth/TokenValidate', {headers:{"authorization" : `Bearer ${token}`  }}).then(Response=>{
+ await axios.get('/Auth/TokenValidate', {headers:{"authorization" : `Bearer ${token}`  }}).then(Response=>{
         
       if(Response.data.resval === "TokenVerified")
       { window.location.replace(`/Account/${UserName}`);

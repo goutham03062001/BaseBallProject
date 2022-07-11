@@ -40,7 +40,7 @@ const UserLogin = () => {
     var CheckMessage = "";
     await axios
       .post(
-        `Auth/${UserType}/Login`,
+        `/Auth/${UserType}/Login`,
         UserType === "Admin"
           ? { UserName: UserName, Password: Password, SecretKey: SecretKey }
           : {
@@ -84,7 +84,7 @@ const UserLogin = () => {
     console.log(token);
     if (token && CheckMessage === "Matched")
       await axios
-        .get("Auth/TokenValidate", {
+        .get("/Auth/TokenValidate", {
           headers: { authorization: `Bearer ${token}` },
         })
         .then((Response) => {

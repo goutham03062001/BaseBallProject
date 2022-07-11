@@ -1,3 +1,4 @@
+import { LocalCafe } from '@mui/icons-material';
 import express, { response } from 'express';
 import EventSchema from '../Schemas/EventSchema.js';
 
@@ -18,9 +19,10 @@ catch(err){
 
 });
 
-EventRouter.get('/getEvents', async(req,response)=>{
-    await EventSchema.find({Organisers:req.body.Organiser})
+EventRouter.get('/getEvents/:Organiser', async(req,response)=>{
+    await EventSchema.find({Organisers:req.params.Organiser})
     .then(res=>{
+        console.log("Fetched events for user ",req.params.Organiser,"-> ",res);
         response.status(200).send(res)
     })
     .catch(err=>{

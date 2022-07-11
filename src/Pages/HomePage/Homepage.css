@@ -20,3 +20,13 @@
 .AddNewEventButtonWrapper{
     position: fixed;
 }
+
+.FormData-TeamWrapper{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.FormData-TeamAddButton{
+    margin-left: 40px;
+}

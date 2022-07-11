@@ -5,7 +5,7 @@ const EventSchemaX= new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        unique: true,
+        unique: false,
     },
     Organisation: {
         type: String,
@@ -16,19 +16,19 @@ const EventSchemaX= new mongoose.Schema({
     },
     Schedule:{
         DateTo:{
-            type: Date,
+            type: String,
             required:true
         },
         DateFrom:{
-            type: Date,
+            type: String,
             required:true
         },
         TimeFrom:{
-            type: Date,
+            type: String,
             required:true
         },
         TimeTo:{
-            type: Date,
+            type: String,
             required:true
         }
     },
