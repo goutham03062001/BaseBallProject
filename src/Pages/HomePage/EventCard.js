@@ -1,12 +1,14 @@
 import { Card , Button } from "antd";
 import React from "react";
 import './EventCard.css';
-
+import { Box } from "@mui/material";
 const EventCard = (props) => {
   const event = props.event;
   const key = props.index;
   return (
-    <Card key={key} style={{ width: 300 , marginBottom: 16 }}
+    <Box key={key} sx={{ width: 'fit-content' , marginBottom: 16 
+    , boxShadow: 4, marginRight:10 , padding:'20px' , borderRadius:3
+    }}
       
     >
       <div>
@@ -29,7 +31,7 @@ const EventCard = (props) => {
           >Delete</Button>
         </div>
       </div>
-    </Card>
+    </Box>
   );
 };
 

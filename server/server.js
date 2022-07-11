@@ -31,7 +31,7 @@ const httpServer = expressServer.listen(port, ()=>{
     console.log("Server connected to Port" ,port);
 }); 
 expressServer.use('/Auth',UserRouter);
-expressServer.use('/EventAPI',EventRouter);
+expressServer.use('/Events',EventRouter);
 const DbUri = process.env.DBURI;
 
 mongoose.connect(DbUri || process.env.DbUri,
@@ -48,7 +48,6 @@ const DBconnection = mongoose.connection;
 
 
 
-<<<<<<< HEAD
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 // if(process.env.NODE_ENV === 'production'){
@@ -60,17 +59,5 @@ expressServer.use('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../build/index.html'));
   });
   console.log(path.join(__dirname,"../","build"));
-=======
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = dirname(__filename);
-// if(process.env.NODE_ENV === 'production'){
-//     expressServer.use(express.static(path.join(__dirname,"../","client/build")));
-// }
-// expressServer.use(express.static(path.join(__dirname,"../","client/build")));
-
-// expressServer.use('/', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../client/build/index.html'));
-//   });
->>>>>>> 129a6c323cd2b0f079649c73b19807b1b23025d2
 
   export default expressServer;

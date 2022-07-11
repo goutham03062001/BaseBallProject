@@ -1,9 +1,21 @@
-.tournaments{
- text-align : center
+.Account-Wrapper{
+ text-align : center;
+ position : relative;
+ height: 100%;
+ width: 100%;
 }
-.tournaments_list{
+.Account-Header-Wrapper{
     display: flex;
-    flex-direction : column;
-    justify-content: center;
+    position: absolute;
+}
+.Account-Body{
+    display: flex;
+    flex-direction : row;
+    justify-content: space-around;
     align-items : center;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+.AddNewEventButtonWrapper{
+    position: fixed;
 }

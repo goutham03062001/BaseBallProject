@@ -52,3 +52,32 @@
   position: relative;
   margin-top:-350px;
 }
+
+.App-Wrapper{
+display:flex;
+flex-flow: column nowrap;
+width: 100vw;
+height: 100vh;
+overflow: hidden;
+}
+
+.NavBar-Wrapper{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  flex:0.09;
+  width: 100%;
+}
+
+.Content-Wrapper{
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  flex:0.5;
+  
+}
+

@@ -1,0 +1,198 @@
+.NavBar-Main-Wrapper{
+    width:100%;
+    display:flex;
+    flex-flow: row nowrap;
+    background-color: rgb(13, 28, 38);
+    /*background-color: rgb(54, 53, 53);*/
+    box-shadow: 4px 5px 15px rgb(54, 53, 53);  
+    min-height: 6vw;
+    align-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .Logo-Container{
+    flex:0.15;
+   
+   
+    /*background: rgb(203, 82, 105); */
+    border-color: transparent;
+    flex-flow: row nowrap;
+    align-content: center;
+  }
+  
+  .NavBar-Content-Wrapper {
+    justify-self: flex-end;
+    margin-left: auto;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+   flex: 0.33;
+    
+    border-color: transparent;
+  }
+  .NavBar2-Main-Wrapper{
+    display:none;
+  }
+  
+  .NavBar-Element-Container {
+    text-decoration: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+  }
+  .Link-Text{
+    text-decoration: none;
+    color:white;
+  }
+  .Link-Text:hover{
+    color: rgb(108, 211, 236);
+  }
+  
+  .Active .Link-Text:hover{
+    color:white;
+  }
+  
+  .NavLink {
+    padding: 7px 7px;
+    font-size: 25px;
+    text-decoration: none;
+    color: rgb(108, 211, 236);
+    font-weight: 700;
+  }
+  
+  .Active {
+      background-color: rgb(108, 211, 236);
+    transition: ease-in 500ms;
+    border-radius: 6px;
+    box-shadow: 5px 5px 18px rgb(0,0,0);
+  
+  }
+  .About-Element{
+    height:100%;
+    align-self: center;
+  }
+  .Community-Element{
+    height: 47.6px;
+    align-self: center;
+  }
+  .Community-Menu-Nav{
+    
+  transform: translate(-150%,-120%);
+  bottom:-48px;
+  left:20px;
+  
+  }
+  .Nav-Logo{
+    width: 70px;
+    height:100%;
+    margin-left:10vmin;
+  }
+  .About-Dropdown{
+    position: relative;
+    min-height: 100%;
+    display: flex;
+  }
+  
+  .Dropdown-Menu{
+    min-width: 170px;
+    position: absolute;
+    z-index: -10;
+    display:flex;
+    flex-flow:column nowrap;
+    opacity: 0;
+  transform: translate(-11%,43%);
+  border-radius: 7%;
+  transition: 700ms ease-in;
+  
+  background-color: rgb(54, 53, 53);
+    box-shadow: 4px 5px 15px rgb(54, 53, 53);
+    /*background: rgb(203, 82, 105); */
+  }
+  
+  .About-Dropdown:hover + .Dropdown-Menu{
+    display: flex;
+    transition: 155ms ease-in;
+    z-index: 1000;
+    opacity: 1;
+  }
+  
+  .About-Dropdown:hover .Dropdown-Menu{
+    display: flex;
+    transition: 155ms ease-in;
+    z-index: 1000;
+    opacity: 1;
+  }
+  
+  .gradient-text {
+    /* Fallback: Set a background color. */
+    background-color: #fcf9f9;
+  
+    /* Create the gradient. */
+    background-image: linear-gradient(
+      45deg,
+      white 10%,
+      #ca4246 20.666%,
+      rgb(133, 76, 58) 22%,
+      rgb(124, 33, 33) 40%,
+      #8b9862 50%,
+      #8b9862 66.666%,
+      #476098 66.666%,
+      #476098 83.333%,
+      #a7489b 83.333%
+    );
+  
+    /* Set the background size and repeat properties. */
+    background-size: 100%;
+    background-repeat: repeat;
+  
+    /* Use the text as a mask for the background. */
+    /* This will show the gradient as a text color rather than element bg. */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  
+    /* Animate the text when loading the element. */
+    /* This animates it on page load and when hovering out. */
+    animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
+  }
+  
+  .gradient-text:hover {
+    animation: rainbow-text-simple-animation 0.5s ease-in forwards;
+  }
+  /* Move the background and make it smaller. */
+  /* Animation shown when entering the page and after the hover animation. */
+  @keyframes rainbow-text-simple-animation-rev {
+    0% {
+      background-size: 650%;
+    }
+    40% {
+      background-size: 650%;
+    }
+    100% {
+      background-size: 100%;
+    }
+  }
+  
+  /* Move the background and make it larger. */
+  /* Animation shown when hovering over the text. */
+  @keyframes rainbow-text-simple-animation {
+    0% {
+      background-size: 100%;
+    }
+    80% {
+      background-size: 650%;
+    }
+    100% {
+      background-size: 650%;
+    }
+  }
+  
+  @media only screen and (max-width: 600px) {
+    
+  }
+  
+  
+  
