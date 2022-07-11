@@ -1,0 +1,9 @@
+.tournaments{
+ text-align : center
+}
+.tournaments_list{
+    display: flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items : center;
+}

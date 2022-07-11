@@ -11,6 +11,9 @@ import UserSignUp from './Pages/TestLogin/UserSignUp.js';
 import UserLogin from './Pages/TestLogin/UserLogin.js';
 import AdminSignUp from './Pages/TestLogin/AdminSignUp.js';
 import AdminLogin from './Pages/TestLogin/AdminLogin.js';
+import {Routes , Route} from 'react-router-dom'
+import 'antd/dist/antd.css';
+import HomePage from './Pages/HomePage/HomePage.js';
 
 function App() {
   return (
@@ -30,6 +33,11 @@ function App() {
 
     </Routes>
     
+    <Routes>
+      <Route  path = "/" element = {<HomePage/>}/>
+      <Route path="/register" element={<RegisterPage/>}/>
+      <Route path ="/login" element = {<LoginPage/>}/>
+    </Routes>
     </>
   )
 }

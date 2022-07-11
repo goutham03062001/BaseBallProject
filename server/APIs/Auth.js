@@ -181,7 +181,6 @@ UserRouter.post("/:UserType/SignUp", async (req, res) => {
    });
    
    UserRouter.get("/CheckUser/:UserName", async (req, response) => {
-    
      const UserName = req.params.UserName;
      console.log("Checking for user->",UserName);
      const count  =await UserSchema.find({UserName : UserName})
