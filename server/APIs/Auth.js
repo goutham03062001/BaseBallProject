@@ -75,11 +75,7 @@ UserRouter.post("/:UserType/SignUp", async (req, res) => {
    });
    
    function fetchToken(UserName) {
-<<<<<<< HEAD
      return jwt.sign({ UserName }, process.env.AccessToken, { expiresIn: "6h" });
-=======
-     return jwt.sign({ UserName }, process.env.RefreshToken, { expiresIn: "6h" });
->>>>>>> 129a6c323cd2b0f079649c73b19807b1b23025d2
    }
    
    UserRouter.post("/:UserType/Login", async (req, response) => {
@@ -157,27 +153,16 @@ UserRouter.post("/:UserType/SignUp", async (req, res) => {
      const Token = HeaderToken && HeaderToken.split(" ")[1];
      console.log("This is Acquired Token->");
      console.log(Token);
-<<<<<<< HEAD
      if (!Token) { 
-=======
-     if (Token===null) { 
->>>>>>> 129a6c323cd2b0f079649c73b19807b1b23025d2
        const resval = "NoTokenFound";
        res.send(resval);
        console.log("Invalid Req, Token Not found Checking Password");
      } else {
        var reftoken = false;
-<<<<<<< HEAD
         
        jwt.verify(Token, process.env.AccessToken, (err, UserName) => {
          if (err) {
            console.log(err.message);
-=======
-   
-       jwt.verify(Token, process.env.RefreshToken, (err, UserName) => {
-         if (err) {
-           console.log(err);
->>>>>>> 129a6c323cd2b0f079649c73b19807b1b23025d2
            console.log(UserName);
            res.send("TokenExpired");
          } else {
