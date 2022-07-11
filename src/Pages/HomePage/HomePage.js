@@ -28,65 +28,161 @@ const HomePage = () => {
   const [updateVisible, setupdateVisible]=useState(false);
   const {RangePicker} = DatePicker;
   const {TextArea} = Input; 
-  
-  const TestEvents = [
-    {
-      team1: "team1",
-      team2: "team2",
-      venue: "venue",
-      date: "date",
-      time: "time",
-      result: "result",
-    },
-    {
-      team1: "team1",
-      team2: "team2",
-      venue: "venue",
-      date: "date",
-      time: "time",
-      result: "result",
-    },
-    {
-      team1: "team1",
-      team2: "team2",
-      venue: "venue",
-      date: "date",
-      time: "time",
-      result: "result",
-    },
-    {
-      team1: "team1",
-      team2: "team2",
-      venue: "venue",
-      date: "date",
-      time: "time",
-      result: "result",
-    },
-    {
-      team1: "team1",
-      team2: "team2",
-      venue: "venue",
-      date: "date",
-      time: "time",
-      result: "result",
-    },
-    {
-      team1: "team1",
-      team2: "team2",
-      venue: "venue",
-      date: "date",
-      time: "time",
-      result: "result",
-    },
-    {
-      team1: "team1",
-      team2: "team2",
-      venue: "venue",
-      date: "date",
-      time: "time",
-      result: "result",
-    },
-  ];
+  const TestEvents =[];
+//   = [
+//     {
+//     Eventname: "NoobsLeague",
+//     Organisation: "BigNoob",
+//     Organisers:["BigNoob1","BigNoob2"],
+//     Schedule:{
+//         DateTo:"12122112",
+//        DateFrom:"21212122121",
+//         TimeFrom:"327278232",
+//         TimeTo:"2112211221"
+//     },
+//     VenueLocation:"Antartica",
+//     Teams:[
+//         {
+//             Name:"Noobies1",
+//             Members:["Noob1","Noob2" , "Noob3"],
+//             Coaches:["NoobCoach1","NoonChoach2"],
+//             Captain:"Bot"
+
+//         },
+//         {
+//             Name:"Noobies2",
+//             Members:["Noob4","Noob5" , "Noob6"],
+//             Coaches:["NoobCoach3","NoonChoach4"],
+//             Captain:"Bot2"
+
+//         }
+//     ],
+//     MatchSequence:"0-1",
+//     Refrees:["NoobRefree1","Noobrefree2"],
+//     Description:"Noobs Match Audience can play better than these noobs"
+// },
+// {
+//   Eventname: "NoobsLeague",
+//   Organisation: "BigNoob",
+//   Organisers:["BigNoob1","BigNoob2"],
+//   Schedule:{
+//       DateTo:"12122112",
+//      DateFrom:"21212122121",
+//       TimeFrom:"327278232",
+//       TimeTo:"2112211221"
+//   },
+//   VenueLocation:"Antartica",
+//   Teams:[
+//       {
+//           Name:"Noobies1",
+//           Members:["Noob1","Noob2" , "Noob3"],
+//           Coaches:["NoobCoach1","NoonChoach2"],
+//           Captain:"Bot"
+
+//       },
+//       {
+//           Name:"Noobies2",
+//           Members:["Noob4","Noob5" , "Noob6"],
+//           Coaches:["NoobCoach3","NoonChoach4"],
+//           Captain:"Bot2"
+
+//       }
+//   ],
+//   MatchSequence:"0-1",
+//   Refrees:["NoobRefree1","Noobrefree2"],
+//   Description:"Noobs Match Audience can play better than these noobs"
+// }, {
+//     Eventname: "NoobsLeague",
+//     Organisation: "BigNoob",
+//     Organisers:["BigNoob1","BigNoob2"],
+//     Schedule:{
+//         DateTo:"12122112",
+//        DateFrom:"21212122121",
+//         TimeFrom:"327278232",
+//         TimeTo:"2112211221"
+//     },
+//     VenueLocation:"Antartica",
+//     Teams:[
+//         {
+//             Name:"Noobies1",
+//             Members:["Noob1","Noob2" , "Noob3"],
+//             Coaches:["NoobCoach1","NoonChoach2"],
+//             Captain:"Bot"
+
+//         },
+//         {
+//             Name:"Noobies2",
+//             Members:["Noob4","Noob5" , "Noob6"],
+//             Coaches:["NoobCoach3","NoonChoach4"],
+//             Captain:"Bot2"
+
+//         }
+//     ],
+//     MatchSequence:"0-1",
+//     Refrees:["NoobRefree1","Noobrefree2"],
+//     Description:"Noobs Match Audience can play better than these noobs"
+// }, {
+//   Eventname: "NoobsLeague",
+//   Organisation: "BigNoob",
+//   Organisers:["BigNoob1","BigNoob2"],
+//   Schedule:{
+//       DateTo:"12122112",
+//      DateFrom:"21212122121",
+//       TimeFrom:"327278232",
+//       TimeTo:"2112211221"
+//   },
+//   VenueLocation:"Antartica",
+//   Teams:[
+//       {
+//           Name:"Noobies1",
+//           Members:["Noob1","Noob2" , "Noob3"],
+//           Coaches:["NoobCoach1","NoonChoach2"],
+//           Captain:"Bot"
+
+//       },
+//       {
+//           Name:"Noobies2",
+//           Members:["Noob4","Noob5" , "Noob6"],
+//           Coaches:["NoobCoach3","NoonChoach4"],
+//           Captain:"Bot2"
+
+//       }
+//   ],
+//   MatchSequence:"0-1",
+//   Refrees:["NoobRefree1","Noobrefree2"],
+//   Description:"Noobs Match Audience can play better than these noobs"
+// }, {
+//   Eventname: "NoobsLeague",
+//   Organisation: "BigNoob",
+//   Organisers:["BigNoob1","BigNoob2"],
+//   Schedule:{
+//       DateTo:"12122112",
+//      DateFrom:"21212122121",
+//       TimeFrom:"327278232",
+//       TimeTo:"2112211221"
+//   },
+//   VenueLocation:"Antartica",
+//   Teams:[
+//       {
+//           Name:"Noobies1",
+//           Members:["Noob1","Noob2" , "Noob3"],
+//           Coaches:["NoobCoach1","NoonChoach2"],
+//           Captain:"Bot"
+
+//       },
+//       {
+//           Name:"Noobies2",
+//           Members:["Noob4","Noob5" , "Noob6"],
+//           Coaches:["NoobCoach3","NoonChoach4"],
+//           Captain:"Bot2"
+
+//       }
+//   ],
+//   MatchSequence:"0-1",
+//   Refrees:["NoobRefree1","Noobrefree2"],
+//   Description:"Noobs Match Audience can play better than these noobs"
+// }
+//   ];
   
   const params=useParams();
 const UserName=params.UserName;

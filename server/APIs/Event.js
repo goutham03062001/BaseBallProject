@@ -48,7 +48,7 @@ EventRouter.post('/updateEvent', async(req,response)=>{
           await EventSchema.deleteOne({_id:req.body.data._id})
           .then(res=>{
           response.status(200).send("Deleted event");
-          console.log("Event deleted successfully", req.body);
+          console.log("Event deleted successfully", req.body,res);
        })
        .catch(err=>{
        response.status(500).send("error while deleting event",err);

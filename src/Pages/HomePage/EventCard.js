@@ -30,7 +30,7 @@ const EventCard = (props) => {
   const {TextArea} = Input; 
   const event = props.event;
   const key = props.index;
-
+  console.log("Event data in card component is",event);
   const showModal = () => {
     setupdateVisible(true);
   };
@@ -78,12 +78,16 @@ const EventCard = (props) => {
 
 
   async function updateEvent(op){
+
     if (typeof refree === 'string' || refree instanceof String)
     var newrefree=refree.split(",");
     if (typeof organisers === 'string' || organisers instanceof String)
    var neworganisers = organisers.split(",");
     console.log("update Event called");
     await axios.post("/Events/updateEvent",{
+      op:op,
+      data:{
+        _id:event._id,
       Eventname: eventName,
           Organisation: organizationName,
           Organisers:neworganisers,
@@ -98,14 +102,16 @@ const EventCard = (props) => {
           MatchSequence:eventMatchSequence|| "Not defined" ,
           Refrees:newrefree|| ["Not defined"] ,
           Description:description || "Not defined" ,
+        }
     })
     .then(res=>{
   
     }).catch(error=>{
       console.log("error while updating event",error);
     })
+    }
+   
   
-  }
 
 
 
@@ -121,25 +127,28 @@ const EventCard = (props) => {
     >
       <div>
         <h2>
-          {event.team1} vs {event.team2}
+          {event.Eventname}
         </h2>
-        <p>{event.venue}</p>
-        <p>{event.date}</p>
-        <p>{event.time}</p>
-        <p>{event.result}</p>
+        <p> at {event.VenueLocation}</p>
+        <p>{event.Schedule.DateTo} - {event.Schedule.DatFrom}</p>
+        <p>{event.Schedule.TimeTo}</p>
+        <p>Number of Teams : {event.Teams.length}</p>
         <div className="buttons">
 
           <Button
             type="primary"
             shape="round"
             onClick={(e)=>{
-              showModal(e);
+              showModal("updateEvent");
               // setupdateVisible(true);
             }}
           >Edit</Button>
           <Button 
             danger
             shape="round"
+            onClick={(e)=>{
+              updateEvent("deleteEvent");
+            }}
           >Delete</Button>
         </div>
       </div>
