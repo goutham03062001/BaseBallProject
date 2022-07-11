@@ -1,0 +1,71 @@
+.SignUp-Wrapper{
+    width:100%;
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-image: linear-gradient(to right, hsl(0,0%,85%), hsl(0,0%,94%));
+  }
+  
+  .On-Box-Text{
+    
+    color: black;
+    font-size: 19px;
+    font-weight: 500;
+  
+  }
+  
+  .SignUp-Button{
+    width:80%;
+   text-align: center;
+   font-size: 23px;
+   font-weight: 550;
+   margin-top: 5px;
+   background-image: linear-gradient(to right, rgb(149, 224, 149),rgb(91, 202, 91),rgb(41, 161, 115),rgb(68, 109, 156));
+   border-radius: 6px;
+   height: min-content;
+   padding: 10px 20px;
+   cursor: pointer;
+  }
+  .SignUp-Wrapper a{
+    color:black;
+    text-decoration: none;
+    transform: translateY(5px);
+    width:80%;
+   text-align: center;
+   font-size: 23px;
+   font-weight: 550;
+   margin-top: 5px;
+   background-image: linear-gradient(to right, rgb(149, 224, 149),rgb(91, 202, 91),rgb(41, 161, 115),rgb(68, 109, 156));
+   border-radius: 6px;
+  
+   padding: 10px 20px;
+   cursor: pointer;
+  }
+  
+  .SignUp-Message{
+    margin-top:10px;
+  }
+  
+  .Down-Button{
+    transform: translateY(5px);
+    height: 60px;
+  }
+  .Button-Holder-Log
+  {  flex:0.35;
+    display:flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-around;
+    max-width: 300px;
+    width: 100%;
+    margin-top: 3vh;
+  }
+
+  .Visiblex{
+display: flex;
+  }
+  .Hiddenx{
+      display: none;
+  }

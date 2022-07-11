@@ -1,0 +1,17 @@
+.loginpage_wrapper{
+    height:100vh;
+    width:100vw;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+.logincard{
+    height: 300px;
+    width : 300px;
+}
+.logincard_title{
+    text-align:center;
+}
+.logincard_input{
+    padding:0 10px;
+}
